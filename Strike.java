@@ -6,7 +6,7 @@
  */
 public class Strike
 {
-    // Create main method of Spike game
+    // Create main method of Strike game
     public static void main(String[] args)
     {
         Ticket myTicket = new Ticket();
