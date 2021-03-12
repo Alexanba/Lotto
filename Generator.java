@@ -37,6 +37,7 @@ public class Generator
     
     public int getRand()
     {
+        randCreate();
         return randNum;
     }
 }

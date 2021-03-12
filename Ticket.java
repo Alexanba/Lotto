@@ -9,6 +9,8 @@ public class Ticket
 {
     // fields to create arrays   
     final int LIMIT = 6;
+    boolean errorTicket = true; 
+    boolean errorLotto = true;
     Generator myTicket = new Generator(); // Creates ticket object
     Generator myLotto = new Generator();
     int[] lottoNum = new int[LIMIT]; // Create arrays
@@ -25,27 +27,39 @@ public class Ticket
     /**
      * Checks if there is a duplicate number in arrays
      */
-    public boolean check()
+    public boolean checkTicket(int ticketCheck)
     {
+        
        for (int checker = 0; checker < LIMIT; checker++)
        {
-          if ( ticketNum[checker] == myTicket.getRand())
+          if ( ticketNum[checker] == ticketCheck)
           {
-              return false;
+              errorTicket = false;
+              break;
             }
-          else if ( ticketNum[checker] != myTicket.getRand())
+          else if ( ticketNum[checker] != ticketCheck)
           {
-              return true;
-            }
-          else if ( lottoNum[checker] != myLotto.getRand())
-          {
-             return true; 
-            }
-          else if ( lottoNum[checker] == myLotto.getRand())
-          {
-             return false;
+              errorTicket = true;
             }
         }
+       return errorTicket;
+    }
+    public boolean checkLotto(int lottoCheck)
+    {
+        
+       for (int checker = 0; checker < LIMIT; checker++)
+       {
+          if ( lottoNum[checker] != lottoCheck)
+          {
+             errorLotto = true; 
+            }
+          else if ( lottoNum[checker] == lottoCheck)
+          {
+             errorLotto = false;
+             break;
+            }
+        }
+       return errorLotto;
     }
     /**
      * Class that returns the arrays
@@ -56,13 +70,13 @@ public class Ticket
         { 
             myLotto.randCreate();
             lottoNum[index] = myLotto.getRand();
-            for (int check = 0; check < LIMIT; check++)
+            errorLotto = checkLotto(lottoNum[index]);
+            
+            if (errorLotto == false)
             {
-               while(lottoNum[index] == lottoNum[check])
-               {
                    myLotto.randCreate();
                    lottoNum[index] = myLotto.getRand();
-               }
+                   errorLotto = checkLotto(lottoNum[index]);
             }
         }
         
@@ -75,13 +89,12 @@ public class Ticket
         {
             myTicket.randCreate();
             ticketNum[index] = myTicket.getRand();
-            for (int check = 0; check < LIMIT; check++)
+            errorTicket = checkTicket(ticketNum[index]);
+            if (errorTicket == false)
             {
-               while(ticketNum[index] == ticketNum[check])
-               {
                    myTicket.randCreate();
                    ticketNum[index] = myTicket.getRand();
-               }
+                   errorTicket = checkTicket(ticketNum[index]);
             }
         }
         return ticketNum;

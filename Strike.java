@@ -17,11 +17,11 @@ public class Strike
         int[] lottoNum = myLotto.getLotto();
         for( int index = 0; index < LIMIT; index ++)
            { 
-               System.out.println(ticketNum[index] + "  ");
+               System.out.println("Ticket number\t" + index + "  is\t" + ticketNum[index]);
             }
         for( int index = 0; index < LIMIT; index ++)
            { 
-               System.out.println(lottoNum[index] + "  ");
+               System.out.println("Lotto number\t" + index + "  is\t" + lottoNum[index]);
             }
         
     }
