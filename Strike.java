@@ -10,7 +10,7 @@ public class Strike
     public static void main(String[] args)
     {
         Ticket myTicket = new Ticket();
-        Ticket myLotto = new Ticket();
+        Lotto myLotto = new Lotto();
         final int LIMIT = 6;
         int[] ticketNum = myTicket.getTicket();
             
