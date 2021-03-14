@@ -1,12 +1,17 @@
 
 /**
- * Write a description of class simStrike here.
+ * Simulates the strike game until strike 4 is won
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Baxter Alexander)
+ * @version (15.03.21)
  */
 public class simStrike
 {
+    /**
+     * Main method that runs strike until the strike four is won
+     * counts how many iterations and results to print at end
+     * @param args for argument of main method
+     */
     public static void main(String[] args)
     {
         final int LOOP = 1000000;
@@ -20,16 +25,16 @@ public class simStrike
         {
             runs++;
             Ticket myTicket = new Ticket();
-            Lotto myLotto = new Lotto();
+            lottoDraw myLotto = new lottoDraw();
             final int STRIKE = 4;
             int strikeScore = 0;
             int[] ticketNum = myTicket.getTicket(); 
             int[] lottoNum = myLotto.getLotto();
-            for( int index = 0; index < STRIKE; index++)
+            for ( int index = 0; index < STRIKE; index++)
             {
-                if( ticketNum[index] == lottoNum [index])
+                if ( ticketNum[index] == lottoNum [index])
                 {
-                    strikeScore ++;
+                    strikeScore++;
                 }
             }
             if (strikeScore == 0)
@@ -53,8 +58,10 @@ public class simStrike
                 strike4++;
             }
         }
-        System.out.println("Over the " + runs + " times that strike was simulated you\nLost " +
-                loss + " times \nGot Strike 1 " + strike1 + "times\nGot Strike 2 " + strike2 + "times\nGot Strike 3 " +
-                strike3 + "times\nAnd Strike 4 " + strike4 + "times");
+        System.out.println("Over the " + runs + 
+            " times that strike was simulated you\nLost " + loss + 
+            " times \nGot Strike 1 " + strike1 + "times\nGot Strike 2 " 
+            + strike2 + "times\nGot Strike 3 " + strike3 + 
+            "times\nAnd Strike 4 " + strike4 + "times");
     }
 }

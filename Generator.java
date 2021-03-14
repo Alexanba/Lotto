@@ -33,6 +33,7 @@ public class Generator
     
     /**
      * Returns the random values
+     * @return the random number
      */
     
     public int getRand()

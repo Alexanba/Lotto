@@ -25,38 +25,41 @@ public class Ticket
     
     /**
      * Checks if there is a duplicate number in arrays
+     * @return returns the boolean value from the check method
+     * @param ticketCheck is the passed in value for the ticket number array
      */
     public boolean checkTicket(int ticketCheck)
     {
-        
-       for (int checker = 0; checker < index; checker++)
-       {
-          if ( ticketNum[checker] == ticketCheck)
-          {
-              errorTicket = false;
-              break;
+        for (int checker = 0; checker < index; checker++)
+        {
+            if ( ticketNum[checker] == ticketCheck)
+            {
+                errorTicket = false;
+                break;
             }
-          else if ( ticketNum[checker] != ticketCheck)
-          {
-              errorTicket = true;
+            else if ( ticketNum[checker] != ticketCheck)
+            {
+                errorTicket = true;
             }
         }
-       return errorTicket;
+        return errorTicket;
     }
-    
+    /**
+     * Creates the ticekt array
+     * @return the array to be called as an object
+     */
     public int[] getTicket()
     {
-        for ( index = 0; index < LIMIT; index ++)
+        for ( index = 0; index < LIMIT; index++)
         {
             myTicket.randCreate();
             ticketNum[index] = myTicket.getRand();
             boolean etCheck = checkTicket(ticketNum[index]);
             while (etCheck == false)
             {
-                   myTicket.randCreate();
-                   ticketNum[index] = myTicket.getRand();
-                   etCheck = checkTicket(ticketNum[index]);
-
+                myTicket.randCreate();
+                ticketNum[index] = myTicket.getRand();
+                etCheck = checkTicket(ticketNum[index]);
             }
         }
         return ticketNum;
